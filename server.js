@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const fs = require('fs');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -10,71 +9,57 @@ const port = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
-// Buscar la carpeta 'public' en varias ubicaciones
-const publicPaths = [
-  path.join(__dirname, 'public'),
-  path.join(__dirname, '..', 'public'),
-  path.join(process.cwd(), 'public'),
-];
+// Servir archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
 
-let publicPath = null;
-for (const p of publicPaths) {
-  if (fs.existsSync(p)) {
-    publicPath = p;
-    break;
-  }
-}
-
-if (publicPath) {
-  console.log(`📁 Sirviendo archivos desde: ${publicPath}`);
-  app.use(express.static(publicPath));
-} else {
-  console.error('❌ No se encontró la carpeta public');
-}
-
-// Ruta principal - SIRVE EL HTML
+// Ruta principal - Sirve el HTML
 app.get('/', (req, res) => {
-  if (publicPath) {
-    const indexPath = path.join(publicPath, 'index.html');
-    if (fs.existsSync(indexPath)) {
-      res.sendFile(indexPath);
-    } else {
-      res.send('⚠️ index.html no encontrado en public');
-    }
-  } else {
-    res.send('⚠️ Carpeta public no encontrada');
-  }
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // API: Obtener ranking (datos de prueba)
 app.get('/api/ranking', (req, res) => {
   const testData = [
-    { id: 1, name: "Cachame.cl", description: "El ranking chileno", link: "https://cachame.cl", amount: 10000, created_at: new Date().toISOString() },
-    { id: 2, name: "Prueba", description: "Testeando la API", link: "https://google.com", amount: 5000, created_at: new Date().toISOString() }
+    { 
+      id: 1, 
+      name: "Cachame.cl", 
+      description: "El ranking chileno", 
+      link: "https://cachame.cl", 
+      amount: 10000, 
+      created_at: new Date().toISOString() 
+    },
+    { 
+      id: 2, 
+      name: "Prueba", 
+      description: "Testeando la API", 
+      link: "https://google.com", 
+      amount: 5000, 
+      created_at: new Date().toISOString() 
+    }
   ];
   res.json(testData);
 });
 
-// API: Crear preferencia de pago (simulada)
+// API: Crear preferencia de pago
 app.post('/api/create-preference', (req, res) => {
   const { name, description, link, amount, platform, buttonText } = req.body;
+  
+  console.log('📝 Nueva entrada recibida:', { name, description, link, amount, platform, buttonText });
   
   if (!name || !link || !amount || amount < 1000) {
     return res.status(400).json({ error: 'Faltan datos o el monto es menor a $1.000 CLP' });
   }
 
-  // Simular respuesta de Mercado Pago
-  console.log('📝 Nueva entrada:', { name, description, link, amount, platform, buttonText });
-  
-  // En modo de prueba, solo mostramos un mensaje
+  // Por ahora, solo devolvemos un mensaje de éxito simulado
   res.json({ 
-    init_point: '#',
-    message: '⚠️ Modo de prueba: Para pagar, configura Mercado Pago con tus credenciales reales.'
+    success: true,
+    message: '✅ Pago registrado (modo de prueba)',
+    data: { name, description, link, amount }
   });
 });
 
 // Iniciar el servidor
-app.listen(port, () => {
-  console.log(`✅ Servidor corriendo en http://localhost:${port}`);
-  console.log(`📁 Sirviendo desde: ${publicPath || 'no encontrado'}`);
+app.listen(port, '0.0.0.0', () => {
+  console.log(`✅ Servidor corriendo en http://0.0.0.0:${port}`);
+  console.log(`📁 Sirviendo archivos desde: ${path.join(__dirname, 'public')}`);
 });

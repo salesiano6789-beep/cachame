@@ -57,6 +57,7 @@
       font-weight: 500;
       font-size: 0.95rem;
       transition: color 0.2s;
+      cursor: pointer;
     }
     .nav a:hover { color: #0a7d47; }
     .btn-primary {
@@ -888,11 +889,15 @@
 
       if (!confirm(confirmMsg)) return;
 
-      const msgDiv = document.createElement('div');
+      const msgDiv = document.getElementById('paymentMessage') || document.createElement('div');
       msgDiv.id = 'paymentMessage';
       msgDiv.className = 'message success';
-      msgDiv.textContent = '✅ ¡Todo listo! Ahora vas a ser redirigido a Mercado Pago pa' completar el pago.';
-      document.getElementById('formCard').appendChild(msgDiv);
+      msgDiv.textContent = '⏳ Procesando pago...';
+      
+      const formCard = document.getElementById('formCard');
+      if (!document.getElementById('paymentMessage')) {
+        formCard.appendChild(msgDiv);
+      }
 
       try {
         const res = await fetch('/api/create-preference', {
@@ -910,7 +915,13 @@
 
         const data = await res.json();
         if (res.ok && data.init_point) {
-          window.location.href = data.init_point;
+          if (data.init_point === '#') {
+            msgDiv.textContent = '⚠️ ' + data.message;
+            msgDiv.className = 'message error';
+          } else {
+            msgDiv.textContent = '✅ Redirigiendo a Mercado Pago...';
+            window.location.href = data.init_point;
+          }
         } else {
           msgDiv.textContent = `❌ Error: ${data.error || 'Intenta de nuevo'}`;
           msgDiv.className = 'message error';
@@ -940,7 +951,7 @@
       document.getElementById('rankCount').textContent = ranking.length;
 
       if (ranking.length === 0) {
-        container.innerHTML = '<p style="text-align:center;color:#94a3b8;padding:20px;">Sé el primero en aparecer. ¡Pagá pa' ser el #1!</p>';
+        container.innerHTML = '<p style="text-align:center;color:#94a3b8;padding:20px;">Sé el primero en aparecer. ¡Pagá pa\' ser el #1!</p>';
         return;
       }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +49,7 @@
       display: flex;
       align-items: center;
       gap: 20px;
+      flex-wrap: wrap;
     }
     .nav a {
       text-decoration: none;
@@ -511,6 +512,47 @@
     .activity-item .act-info .act-time { font-size: 0.75rem; color: #94a3b8; }
     .activity-item .act-amount { font-weight: 700; color: #0a7d47; }
 
+    /* ===== REGLAS Y TÉRMINOS ===== */
+    .reglas-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin: 30px 0;
+    }
+    @media (max-width: 600px) {
+      .reglas-container { grid-template-columns: 1fr; }
+    }
+    .reglas-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      border: 1px solid #eef2f6;
+    }
+    .reglas-card h3 {
+      font-size: 1.3rem;
+      color: #0a7d47;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .reglas-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .reglas-card ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.95rem;
+      color: #475569;
+    }
+    .reglas-card ul li:last-child { border-bottom: none; }
+    .reglas-card ul li::before {
+      content: '• ';
+      color: #0a7d47;
+      font-weight: 700;
+    }
+
     /* ===== FOOTER ===== */
     .footer {
       text-align: center;
@@ -532,6 +574,7 @@
       .hero .stats { flex-direction: column; gap: 8px; border-radius: 20px; }
       .destino-grid { grid-template-columns: 1fr 1fr; }
       .preview-card { max-width: 100%; }
+      .reglas-container { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -544,8 +587,9 @@
         🏆 Cacha<span>me</span><small>.lol</small>
       </div>
       <nav class="nav">
-        <a href="#">Reglas</a>
-        <a href="#" class="btn-primary" onclick="scrollToForm()">Armá tu lugarcito</a>
+        <a href="#reglas">Reglas</a>
+        <a href="#terminos">Términos</a>
+        <a href="#" class="btn-primary" onclick="scrollToForm()">Tomar un puesto</a>
         <a href="#">👤</a>
       </nav>
     </header>
@@ -553,7 +597,7 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
       <h1>El puesto #1 se compra</h1>
-      <p>El que más pone, más arriba queda. Paga una sola vez con Mercado Pago para superar a los demás.</p>
+      <p>El que más pone, más arriba queda. Pagai una sola vez con Mercado Pago pa' superar a los demás.</p>
       <div class="stats">
         <span>💰 Total recaudado: <strong id="totalAmount">$0</strong></span>
         <span>👥 Participantes: <strong id="totalCount">0</strong></span>
@@ -563,29 +607,25 @@
 
     <!-- ===== RANKING + ACTIVIDAD ===== -->
     <div class="ranking-container">
-      <!-- Ranking Principal -->
       <div class="card">
         <h2>📊 Ranking <span id="rankCount">0</span></h2>
         <div id="rankingList">
           <div style="text-align:center;color:#94a3b8;padding:30px;">Cargando ranking...</div>
         </div>
       </div>
-
-      <!-- Actividad Reciente -->
       <div class="card">
         <h2>🕒 Actividad reciente</h2>
         <div id="activityList">
-          <div style="text-align:center;color:#94a3b8;padding:20px;font-size:0.9rem;">Aún no hay actividad</div>
+          <div style="text-align:center;color:#94a3b8;padding:20px;font-size:0.9rem;">Todavía no hay movimiento</div>
         </div>
       </div>
     </div>
 
     <!-- ===== FORMULARIO DE CREACIÓN (PASOS) ===== -->
     <div class="form-card" id="formCard">
-      <h2>🔥 Armá tu lugarcito</h2>
-      <p class="sub">Personalizá tu entrada en el ranking. Son 2 pasos rápidos.</p>
+      <h2>🔥 Tomar un puesto</h2>
+      <p class="sub">Personaliza tu entrada en el ranking. Son 2 pasos rápidos.</p>
 
-      <!-- Barra de progreso -->
       <div class="progress-bar">
         <div class="step active" data-step="1">
           <div class="circle">1</div>
@@ -593,14 +633,14 @@
         </div>
         <div class="step" data-step="2">
           <div class="circle">2</div>
-          <span class="label">Personalizá</span>
+          <span class="label">Personaliza</span>
         </div>
       </div>
 
       <!-- PASO 1: Destino -->
       <div class="step-content active" data-step="1">
-        <h3 style="margin-bottom:15px;">📌 ¿A dónde los mandás?</h3>
-        <p style="color:#64748b;margin-bottom:15px;">El que toque tu lugarcito cae acá. De ahí sacamos tu iconito.</p>
+        <h3 style="margin-bottom:15px;">📌 ¿A dónde los mandai?</h3>
+        <p style="color:#64748b;margin-bottom:15px;">El que toque tu puesto cae acá. De ahí sacamos tu iconito.</p>
 
         <div class="destino-grid">
           <div class="destino-card" data-platform="instagram">
@@ -645,11 +685,10 @@
 
       <!-- PASO 2: Personalización -->
       <div class="step-content" data-step="2">
-        <h3 style="margin-bottom:15px;">✏️ ¿Qué querés que diga?</h3>
-        <p style="color:#64748b;margin-bottom:15px;">Un título y una línea. Las que te harían tocar a vos.</p>
+        <h3 style="margin-bottom:15px;">✏️ ¿Qué querís que diga?</h3>
+        <p style="color:#64748b;margin-bottom:15px;">Un título y una línea. Las que te harían picar el dedo.</p>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
-          <!-- Formulario -->
           <div>
             <div class="form-group" style="display:block;">
               <label style="font-weight:600;font-size:0.9rem;">Título <span id="titleCount" class="char-count">0/38</span></label>
@@ -665,7 +704,6 @@
             </div>
           </div>
 
-          <!-- Previsualización -->
           <div>
             <label style="font-weight:600;font-size:0.9rem;">📱 Vista previa</label>
             <div class="preview-card" id="previewCard">
@@ -678,7 +716,7 @@
                   <div style="font-size:0.7rem;color:#94a3b8;" id="previewUrl">x.com/aaa</div>
                 </div>
               </div>
-              <div class="preview-desc" id="previewDesc">Anteojos con filtro de laboratorio para trabajar, manejar y dormir mejor</div>
+              <div class="preview-desc" id="previewDesc">Anteojos con filtro de laboratorio pa' trabajar, manejar y dormir mejor</div>
               <a href="#" class="preview-btn" id="previewBtn">Conocer más</a>
             </div>
           </div>
@@ -691,9 +729,35 @@
       </div>
     </div>
 
+    <!-- ===== REGLAS Y TÉRMINOS ===== -->
+    <div class="reglas-container" id="reglas">
+      <div class="reglas-card">
+        <h3>📋 Reglas</h3>
+        <ul>
+          <li>El que paga más, queda más arriba en el ranking.</li>
+          <li>Si pagai más que el #1, lo superai y te convertís en el nuevo líder.</li>
+          <li>El pago es único y no hay renovación mensual.</li>
+          <li>Cualquiera puede superarte en cualquier momento.</li>
+          <li>El monto mínimo es $1.000 CLP.</li>
+          <li>Podés subir tu mismo link pagando solo la diferencia.</li>
+        </ul>
+      </div>
+      <div class="reglas-card" id="terminos">
+        <h3>⚖️ Términos</h3>
+        <ul>
+          <li>Cachame.lol es un experimento y un juego. Los puestos se compran y se pierden.</li>
+          <li>Nada de lo que aparece aquí está revisado, aprobado ni recomendado por Cachame.lol.</li>
+          <li>El que algo publica, se hace cargo de lo que publica.</li>
+          <li>Al comprar, aceptai estas reglas y términos.</li>
+          <li>No hay devoluciones: el pago es voluntario y por un puesto en el ranking.</li>
+          <li>Este sitio es solo para mayores de 18 años.</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
-      <p>El lugar se compra. El que más pone, más arriba queda. · <a href="#">Reglas</a> · <a href="#">Términos</a></p>
+      <p>El puesto se compra. El que más pone, más arriba queda. · <a href="#reglas">Reglas</a> · <a href="#terminos">Términos</a></p>
       <p style="margin-top:5px;font-size:0.75rem;">Hecho con ❤️ para Chile · <a href="https://cachame.lol">Cachame.lol</a></p>
     </footer>
 
@@ -745,7 +809,6 @@
         };
         urlInput.placeholder = placeholders[selectedPlatform] || 'https://...';
         
-        // Actualizar ícono de preview
         const iconUrls = {
           instagram: 'https://www.google.com/s2/favicons?domain=instagram.com&sz=32',
           youtube: 'https://www.google.com/s2/favicons?domain=youtube.com&sz=32',
@@ -761,7 +824,6 @@
       });
     });
 
-    // Actualizar URL en tiempo real
     document.getElementById('urlInput').addEventListener('input', function() {
       const url = this.value;
       userData.url = url;
@@ -812,24 +874,24 @@
         return;
       }
       if (!title) {
-        alert('❌ Poné un título para tu lugarcito.');
+        alert('❌ Poné un título pa' tu puesto.');
         return;
       }
 
-      const confirmMsg = `📋 Confirmá tu lugarcito:\n\n` +
+      const confirmMsg = `📋 Confirmá tu puesto:\n\n` +
         `📍 Destino: ${selectedPlatform}\n` +
         `🔗 URL: ${url}\n` +
         `📝 Título: ${title}\n` +
         `📄 Descripción: ${desc || '(sin descripción)'}\n` +
         `🔘 Botón: ${btn}\n\n` +
-        `¿Todo correcto? Vas a pagar para aparecer en el ranking.`;
+        `¿Todo correcto? Vas a pagar pa' aparecer en el ranking.`;
 
       if (!confirm(confirmMsg)) return;
 
       const msgDiv = document.createElement('div');
       msgDiv.id = 'paymentMessage';
       msgDiv.className = 'message success';
-      msgDiv.textContent = '✅ ¡Todo listo! Ahora vas a ser redirigido a Mercado Pago para completar el pago.';
+      msgDiv.textContent = '✅ ¡Todo listo! Ahora vas a ser redirigido a Mercado Pago pa' completar el pago.';
       document.getElementById('formCard').appendChild(msgDiv);
 
       try {
@@ -840,7 +902,7 @@
             name: title,
             description: desc,
             link: url,
-            amount: 1000, // Monto mínimo por ahora, luego lo configura el usuario
+            amount: 1000,
             platform: selectedPlatform,
             buttonText: btn
           })
@@ -878,7 +940,7 @@
       document.getElementById('rankCount').textContent = ranking.length;
 
       if (ranking.length === 0) {
-        container.innerHTML = '<p style="text-align:center;color:#94a3b8;padding:20px;">Sé el primero en aparecer. ¡Paga para ser el #1!</p>';
+        container.innerHTML = '<p style="text-align:center;color:#94a3b8;padding:20px;">Sé el primero en aparecer. ¡Pagá pa' ser el #1!</p>';
         return;
       }
 
@@ -920,7 +982,7 @@
       const recent = [...ranking].sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, 5);
 
       if (recent.length === 0) {
-        container.innerHTML = '<div style="text-align:center;color:#94a3b8;padding:20px;font-size:0.9rem;">Aún no hay actividad</div>';
+        container.innerHTML = '<div style="text-align:center;color:#94a3b8;padding:20px;font-size:0.9rem;">Todavía no hay movimiento</div>';
         return;
       }
 

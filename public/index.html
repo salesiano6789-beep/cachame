@@ -6,21 +6,17 @@
   <title>Cachame.lol — El puesto #1 se compra</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
   <style>
-    /* ===== RESET Y ESTILOS GLOBALES ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-family: 'Segoe UI', system-ui, sans-serif;
       background: #f4f6f9;
       color: #1e293b;
       padding: 20px;
-      line-height: 1.6;
     }
     .container {
       max-width: 1100px;
       margin: 0 auto;
     }
-
-    /* ===== HEADER ===== */
     .header {
       display: flex;
       justify-content: space-between;
@@ -33,18 +29,9 @@
       flex-wrap: wrap;
       gap: 15px;
     }
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
+    .logo { font-size: 1.8rem; font-weight: 900; }
     .logo span { color: #0a7d47; }
-    .logo small {
-      font-size: 0.8rem;
-      font-weight: 400;
-      color: #94a3b8;
-      margin-left: 8px;
-    }
+    .logo small { font-size: 0.8rem; font-weight: 400; color: #94a3b8; }
     .nav {
       display: flex;
       align-items: center;
@@ -55,8 +42,6 @@
       text-decoration: none;
       color: #475569;
       font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.2s;
       cursor: pointer;
     }
     .nav a:hover { color: #0a7d47; }
@@ -66,11 +51,8 @@
       padding: 8px 20px;
       border-radius: 30px;
       font-weight: 600 !important;
-      transition: background 0.2s;
     }
     .btn-primary:hover { background: #065a33 !important; }
-
-    /* ===== HERO ===== */
     .hero {
       background: linear-gradient(135deg, #0a7d47 0%, #0d9e5a 100%);
       color: white;
@@ -78,20 +60,9 @@
       border-radius: 24px;
       margin-bottom: 30px;
       text-align: center;
-      box-shadow: 0 8px 25px rgba(10, 125, 71, 0.25);
     }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      max-width: 600px;
-      margin: 0 auto 25px;
-    }
+    .hero h1 { font-size: 3rem; font-weight: 900; }
+    .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 10px auto 25px; }
     .hero .stats {
       display: flex;
       justify-content: center;
@@ -100,95 +71,32 @@
       background: rgba(255,255,255,0.15);
       padding: 15px 30px;
       border-radius: 60px;
-      backdrop-filter: blur(4px);
     }
-    .hero .stats span {
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    .hero .stats strong {
-      font-size: 1.4rem;
-      font-weight: 900;
-    }
-
-    /* ===== RANKING ===== */
-    .ranking-container {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 25px;
-      margin-bottom: 30px;
-    }
-    @media (max-width: 800px) {
-      .ranking-container { grid-template-columns: 1fr; }
-    }
-
     .card {
       background: white;
       border-radius: 20px;
       padding: 25px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
       border: 1px solid #eef2f6;
-    }
-    .card h2 {
-      font-size: 1.3rem;
       margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #0f172a;
     }
-    .card h2 span { background: #eef2f6; padding: 2px 12px; border-radius: 30px; font-size: 0.85rem; color: #475569; }
-
+    .card h2 { font-size: 1.3rem; margin-bottom: 20px; }
     .ranking-item {
       display: flex;
       align-items: center;
       gap: 15px;
       padding: 14px 0;
       border-bottom: 1px solid #f1f5f9;
-      transition: background 0.15s;
     }
     .ranking-item:last-child { border-bottom: none; }
-    .ranking-item:hover { background: #f8fafc; margin: 0 -10px; padding: 14px 10px; border-radius: 12px; }
-
-    .position-badge {
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: #94a3b8;
-      min-width: 35px;
-      text-align: center;
-    }
+    .position-badge { font-weight: 800; color: #94a3b8; min-width: 35px; }
     .position-badge.top1 { color: #f59e0b; font-size: 1.4rem; }
     .position-badge.top2 { color: #94a3b8; font-size: 1.3rem; }
     .position-badge.top3 { color: #cd7f32; font-size: 1.2rem; }
-
     .item-info { flex: 1; }
-    .item-info .name {
-      font-weight: 700;
-      color: #0f172a;
-      text-decoration: none;
-      font-size: 1.05rem;
-    }
-    .item-info .name:hover { color: #0a7d47; text-decoration: underline; }
-    .item-info .desc {
-      font-size: 0.9rem;
-      color: #64748b;
-      margin-top: 2px;
-    }
-    .item-info .meta {
-      font-size: 0.75rem;
-      color: #94a3b8;
-      margin-top: 4px;
-      display: flex;
-      gap: 15px;
-    }
-    .item-amount {
-      font-weight: 800;
-      color: #0a7d47;
-      font-size: 1.1rem;
-      white-space: nowrap;
-    }
-
-    /* ===== FORMULARIO DE CREACIÓN (PASOS) ===== */
+    .item-info .name { font-weight: 700; color: #0f172a; text-decoration: none; }
+    .item-info .desc { font-size: 0.9rem; color: #64748b; }
+    .item-info .meta { font-size: 0.75rem; color: #94a3b8; margin-top: 4px; }
+    .item-amount { font-weight: 800; color: #0a7d47; }
     .form-card {
       background: white;
       border-radius: 20px;
@@ -196,205 +104,14 @@
       border: 1px solid #eef2f6;
       margin-bottom: 30px;
     }
-    .form-card h2 {
-      font-size: 1.6rem;
-      margin-bottom: 8px;
-    }
-    .form-card .sub {
-      color: #64748b;
-      margin-bottom: 20px;
-    }
-
-    /* --- Barra de progreso --- */
-    .progress-bar {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 30px;
-      position: relative;
-    }
-    .progress-bar::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: #e2e8f0;
-      transform: translateY(-50%);
-      z-index: 0;
-    }
-    .step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      z-index: 1;
-      cursor: pointer;
-    }
-    .step .circle {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: white;
-      border: 2px solid #e2e8f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #94a3b8;
-      transition: all 0.3s;
-    }
-    .step.active .circle {
-      border-color: #0a7d47;
-      background: #0a7d47;
-      color: white;
-    }
-    .step.done .circle {
-      border-color: #0a7d47;
-      background: #0a7d47;
-      color: white;
-    }
-    .step .label {
-      font-size: 0.75rem;
-      color: #94a3b8;
-      font-weight: 500;
-    }
-    .step.active .label { color: #0a7d47; font-weight: 600; }
-
-    /* --- Pasos --- */
-    .step-content {
-      display: none;
-      animation: fadeIn 0.3s ease;
-    }
-    .step-content.active { display: block; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Paso 1: Destino */
-    .destino-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px;
-      margin: 20px 0;
-    }
-    .destino-card {
-      background: #f8fafc;
-      border: 2px solid transparent;
-      border-radius: 16px;
-      padding: 20px 15px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .destino-card:hover { border-color: #cbd5e1; }
-    .destino-card.selected {
-      border-color: #0a7d47;
-      background: #f0fdf4;
-    }
-    .destino-card .icon { display: block; margin-bottom: 6px; }
-    .destino-card .icon img { 
-      width: 40px; 
-      height: 40px; 
-      border-radius: 10px;
-      object-fit: contain;
-      background: white;
-      padding: 4px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .destino-card .name { font-weight: 600; font-size: 0.95rem; }
-
-    .input-url {
-      margin-top: 20px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .input-url input {
-      flex: 1;
-      padding: 12px 16px;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      font-size: 1rem;
-      min-width: 200px;
-    }
-    .input-url input:focus { outline: none; border-color: #0a7d47; box-shadow: 0 0 0 3px rgba(10,125,71,0.1); }
-    .input-url .hint {
-      font-size: 0.8rem;
-      color: #94a3b8;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .input-url .hint img {
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-    }
-
-    /* Paso 2: Personalización */
-    .preview-card {
-      background: #f8fafc;
-      border-radius: 16px;
-      padding: 20px;
-      margin: 20px 0;
-      border: 1px solid #e2e8f0;
-      max-width: 400px;
-    }
-    .preview-card .preview-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .preview-card .preview-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      overflow: hidden;
-    }
-    .preview-card .preview-icon img {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-    }
-    .preview-card .preview-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #0f172a;
-    }
-    .preview-card .preview-desc {
-      color: #64748b;
-      font-size: 0.95rem;
-      margin: 8px 0;
-    }
-    .preview-card .preview-btn {
-      display: inline-block;
-      background: #0a7d47;
-      color: white;
-      padding: 8px 20px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
+    .form-card h2 { font-size: 1.6rem; margin-bottom: 8px; }
     .form-group {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 15px;
+      margin: 15px 0;
     }
-    @media (max-width: 600px) {
-      .form-group { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 600px) { .form-group { grid-template-columns: 1fr; } }
     .form-group input,
     .form-group textarea {
       width: 100%;
@@ -402,61 +119,11 @@
       border: 1px solid #e2e8f0;
       border-radius: 12px;
       font-size: 1rem;
-      transition: border 0.2s;
       font-family: inherit;
     }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: #0a7d47;
-      box-shadow: 0 0 0 3px rgba(10,125,71,0.1);
-    }
-    .form-group textarea { grid-column: 1 / -1; resize: vertical; min-height: 70px; }
+    .form-group textarea { grid-column: 1 / -1; min-height: 70px; }
     .form-group .full-width { grid-column: 1 / -1; }
-    .char-count {
-      font-size: 0.75rem;
-      color: #94a3b8;
-      text-align: right;
-      margin-top: -8px;
-      margin-bottom: 10px;
-    }
-    .char-count.over { color: #ef4444; }
-
-    /* Botones de navegación */
-    .nav-buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 25px;
-      gap: 15px;
-    }
-    .btn-back {
-      background: #f1f5f9;
-      color: #475569;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 40px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .btn-back:hover { background: #e2e8f0; }
-    .btn-next {
-      background: #0a7d47;
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 40px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-next:hover { background: #065a33; }
-    .btn-next:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    .btn-pagar {
+    .btn-submit {
       background: #0a7d47;
       color: white;
       border: none;
@@ -466,16 +133,8 @@
       font-size: 1.1rem;
       cursor: pointer;
       width: 100%;
-      margin-top: 15px;
-      transition: background 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
     }
-    .btn-pagar:hover { background: #065a33; }
-    .btn-pagar:disabled { opacity: 0.6; cursor: not-allowed; }
-
+    .btn-submit:hover { background: #065a33; }
     .message {
       margin-top: 15px;
       padding: 12px;
@@ -485,463 +144,87 @@
     }
     .message.error { background: #fee2e2; color: #b91c1c; }
     .message.success { background: #dcfce7; color: #166534; }
-
-    /* ===== ACTIVIDAD RECIENTE ===== */
-    .activity-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid #f1f5f9;
-    }
-    .activity-item:last-child { border-bottom: none; }
-    .activity-item .avatar {
-      width: 36px;
-      height: 36px;
-      background: #e2e8f0;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #475569;
-      font-size: 0.8rem;
-      flex-shrink: 0;
-    }
-    .activity-item .act-info { flex: 1; }
-    .activity-item .act-info .act-name { font-weight: 600; color: #0f172a; }
-    .activity-item .act-info .act-time { font-size: 0.75rem; color: #94a3b8; }
-    .activity-item .act-amount { font-weight: 700; color: #0a7d47; }
-
-    /* ===== REGLAS Y TÉRMINOS ===== */
-    .reglas-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
-      margin: 30px 0;
-    }
-    @media (max-width: 600px) {
-      .reglas-container { grid-template-columns: 1fr; }
-    }
-    .reglas-card {
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
-      border: 1px solid #eef2f6;
-    }
-    .reglas-card h3 {
-      font-size: 1.3rem;
-      color: #0a7d47;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .reglas-card ul {
-      list-style: none;
-      padding: 0;
-    }
-    .reglas-card ul li {
-      padding: 8px 0;
-      border-bottom: 1px solid #f1f5f9;
-      font-size: 0.95rem;
-      color: #475569;
-    }
-    .reglas-card ul li:last-child { border-bottom: none; }
-    .reglas-card ul li::before {
-      content: '• ';
-      color: #0a7d47;
-      font-weight: 700;
-    }
-
-    /* ===== FOOTER ===== */
     .footer {
       text-align: center;
       padding: 25px 0;
       color: #94a3b8;
-      font-size: 0.85rem;
       border-top: 1px solid #eef2f6;
       margin-top: 20px;
     }
     .footer a { color: #0a7d47; text-decoration: none; }
-    .footer a:hover { text-decoration: underline; }
-
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
-      .header { flex-direction: column; align-items: stretch; text-align: center; }
-      .nav { justify-content: center; flex-wrap: wrap; }
+      .header { flex-direction: column; text-align: center; }
       .hero { padding: 30px 20px; }
       .hero h1 { font-size: 2.2rem; }
-      .hero .stats { flex-direction: column; gap: 8px; border-radius: 20px; }
-      .destino-grid { grid-template-columns: 1fr 1fr; }
-      .preview-card { max-width: 100%; }
-      .reglas-container { grid-template-columns: 1fr; }
+      .hero .stats { flex-direction: column; gap: 8px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
 
-    <!-- ===== HEADER ===== -->
+    <!-- HEADER -->
     <header class="header">
-      <div class="logo">
-        🏆 Cacha<span>me</span><small>.lol</small>
-      </div>
+      <div class="logo">🏆 Cacha<span>me</span><small>.lol</small></div>
       <nav class="nav">
-        <a href="#reglas">Reglas</a>
-        <a href="#terminos">Términos</a>
-        <a href="#" class="btn-primary" onclick="scrollToForm()">Tomar un puesto</a>
-        <a href="#">👤</a>
+        <a href="#">Reglas</a>
+        <a href="#">Términos</a>
+        <button class="btn-primary" onclick="document.getElementById('formCard').scrollIntoView({behavior:'smooth'})">Tomar un puesto</button>
       </nav>
     </header>
 
-    <!-- ===== HERO ===== -->
+    <!-- HERO -->
     <section class="hero">
       <h1>El puesto #1 se compra</h1>
-      <p>El que más pone, más arriba queda. Pagai una sola vez con Mercado Pago pa' superar a los demás.</p>
+      <p>El que más pone, más arriba queda. Pagai una sola vez con Mercado Pago.</p>
       <div class="stats">
-        <span>💰 Total recaudado: <strong id="totalAmount">$0</strong></span>
+        <span>💰 Total: <strong id="totalAmount">$0</strong></span>
         <span>👥 Participantes: <strong id="totalCount">0</strong></span>
-        <span>⏳ Último movimiento: <strong id="lastMove">hace unos segundos</strong></span>
       </div>
     </section>
 
-    <!-- ===== RANKING + ACTIVIDAD ===== -->
-    <div class="ranking-container">
-      <div class="card">
-        <h2>📊 Ranking <span id="rankCount">0</span></h2>
-        <div id="rankingList">
-          <div style="text-align:center;color:#94a3b8;padding:30px;">Cargando ranking...</div>
-        </div>
-      </div>
-      <div class="card">
-        <h2>🕒 Actividad reciente</h2>
-        <div id="activityList">
-          <div style="text-align:center;color:#94a3b8;padding:20px;font-size:0.9rem;">Todavía no hay movimiento</div>
-        </div>
+    <!-- RANKING -->
+    <div class="card">
+      <h2>📊 Ranking <span id="rankCount">0</span></h2>
+      <div id="rankingList">
+        <div style="text-align:center;color:#94a3b8;padding:30px;">Cargando...</div>
       </div>
     </div>
 
-    <!-- ===== FORMULARIO DE CREACIÓN (PASOS) ===== -->
+    <!-- FORMULARIO -->
     <div class="form-card" id="formCard">
       <h2>🔥 Tomar un puesto</h2>
-      <p class="sub">Personaliza tu entrada en el ranking. Son 2 pasos rápidos.</p>
+      <p style="color:#64748b;margin-bottom:15px;">El mínimo es $1.000 CLP. Completá los datos y pagá con Mercado Pago.</p>
 
-      <div class="progress-bar">
-        <div class="step active" data-step="1">
-          <div class="circle">1</div>
-          <span class="label">Destino</span>
-        </div>
-        <div class="step" data-step="2">
-          <div class="circle">2</div>
-          <span class="label">Personaliza</span>
-        </div>
+      <div class="form-group">
+        <input type="text" id="nameInput" placeholder="Tu nombre o marca" required>
+        <input type="url" id="linkInput" placeholder="Enlace (web, Instagram, etc.)" required>
+        <textarea id="descInput" placeholder="Descripción corta (opcional)"></textarea>
+        <input type="number" id="amountInput" placeholder="Monto en CLP (mínimo 1000)" min="1000" required class="full-width">
       </div>
 
-      <!-- PASO 1: Destino -->
-      <div class="step-content active" data-step="1">
-        <h3 style="margin-bottom:15px;">📌 ¿A dónde los mandai?</h3>
-        <p style="color:#64748b;margin-bottom:15px;">El que toque tu puesto cae acá. De ahí sacamos tu iconito.</p>
-
-        <div class="destino-grid">
-          <div class="destino-card" data-platform="instagram">
-            <span class="icon">
-              <img src="https://www.google.com/s2/favicons?domain=instagram.com&sz=64" alt="Instagram">
-            </span>
-            <div class="name">Instagram</div>
-          </div>
-          <div class="destino-card" data-platform="youtube">
-            <span class="icon">
-              <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" alt="YouTube">
-            </span>
-            <div class="name">YouTube</div>
-          </div>
-          <div class="destino-card" data-platform="x">
-            <span class="icon">
-              <img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="X">
-            </span>
-            <div class="name">X (Twitter)</div>
-          </div>
-          <div class="destino-card" data-platform="external">
-            <span class="icon">
-              <img src="https://www.google.com/s2/favicons?domain=example.com&sz=64" alt="Link externo">
-            </span>
-            <div class="name">Link externo</div>
-          </div>
-        </div>
-
-        <div class="input-url">
-          <input type="url" id="urlInput" placeholder="https://..." required>
-          <span class="hint">
-            <img id="hintIcon" src="https://www.google.com/s2/favicons?domain=example.com&sz=32" alt="icono">
-            Este iconito va a aparecer en tu tarjeta
-          </span>
-        </div>
-
-        <div class="nav-buttons">
-          <span></span>
-          <button class="btn-next" onclick="goToStep(2)">Listo, sigamos →</button>
-        </div>
-      </div>
-
-      <!-- PASO 2: Personalización -->
-      <div class="step-content" data-step="2">
-        <h3 style="margin-bottom:15px;">✏️ ¿Qué querís que diga?</h3>
-        <p style="color:#64748b;margin-bottom:15px;">Un título y una línea. Las que te harían picar el dedo.</p>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;">
-          <div>
-            <div class="form-group" style="display:block;">
-              <label style="font-weight:600;font-size:0.9rem;">Título <span id="titleCount" class="char-count">0/38</span></label>
-              <input type="text" id="titleInput" maxlength="38" placeholder="Ej: Anteojos NOMERCY" oninput="updatePreview(); updateCharCount('titleInput', 'titleCount', 38);">
-            </div>
-            <div class="form-group" style="display:block;margin-top:15px;">
-              <label style="font-weight:600;font-size:0.9rem;">Una línea más <span id="descCount" class="char-count">0/110</span></label>
-              <textarea id="descInput" maxlength="110" placeholder="Ej: Anteojos con filtro de laboratorio..." oninput="updatePreview(); updateCharCount('descInput', 'descCount', 110);" style="min-height:70px;"></textarea>
-            </div>
-            <div class="form-group" style="display:block;margin-top:15px;">
-              <label style="font-weight:600;font-size:0.9rem;">Texto del botón <span id="btnCount" class="char-count">0/20</span></label>
-              <input type="text" id="btnInput" maxlength="20" placeholder="Ej: Conocer más" value="Conocer más" oninput="updatePreview(); updateCharCount('btnInput', 'btnCount', 20);">
-            </div>
-          </div>
-
-          <div>
-            <label style="font-weight:600;font-size:0.9rem;">📱 Vista previa</label>
-            <div class="preview-card" id="previewCard">
-              <div class="preview-header">
-                <div class="preview-icon" id="previewIcon">
-                  <img id="previewIconImg" src="https://www.google.com/s2/favicons?domain=example.com&sz=32" alt="icono">
-                </div>
-                <div>
-                  <div class="preview-title" id="previewTitle">Anteojos NOMERCY</div>
-                  <div style="font-size:0.7rem;color:#94a3b8;" id="previewUrl">x.com/aaa</div>
-                </div>
-              </div>
-              <div class="preview-desc" id="previewDesc">Anteojos con filtro de laboratorio pa' trabajar, manejar y dormir mejor</div>
-              <a href="#" class="preview-btn" id="previewBtn">Conocer más</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="nav-buttons">
-          <button class="btn-back" onclick="goToStep(1)">← Atrás</button>
-          <button class="btn-next" id="confirmBtn" onclick="confirmAndPay()">Mostrame cómo queda →</button>
-        </div>
-      </div>
+      <button class="btn-submit" id="submitBtn">🔥 Pagar con Mercado Pago</button>
+      <div id="message" class="message" style="display:none;"></div>
     </div>
 
-    <!-- ===== REGLAS Y TÉRMINOS ===== -->
-    <div class="reglas-container" id="reglas">
-      <div class="reglas-card">
-        <h3>📋 Reglas</h3>
-        <ul>
-          <li>El que paga más, queda más arriba en el ranking.</li>
-          <li>Si pagai más que el #1, lo superai y te convertís en el nuevo líder.</li>
-          <li>El pago es único y no hay renovación mensual.</li>
-          <li>Cualquiera puede superarte en cualquier momento.</li>
-          <li>El monto mínimo es $1.000 CLP.</li>
-          <li>Podés subir tu mismo link pagando solo la diferencia.</li>
-        </ul>
-      </div>
-      <div class="reglas-card" id="terminos">
-        <h3>⚖️ Términos</h3>
-        <ul>
-          <li>Cachame.lol es un experimento y un juego. Los puestos se compran y se pierden.</li>
-          <li>Nada de lo que aparece aquí está revisado, aprobado ni recomendado por Cachame.lol.</li>
-          <li>El que algo publica, se hace cargo de lo que publica.</li>
-          <li>Al comprar, aceptai estas reglas y términos.</li>
-          <li>No hay devoluciones: el pago es voluntario y por un puesto en el ranking.</li>
-          <li>Este sitio es solo para mayores de 18 años.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer class="footer">
-      <p>El puesto se compra. El que más pone, más arriba queda. · <a href="#reglas">Reglas</a> · <a href="#terminos">Términos</a></p>
-      <p style="margin-top:5px;font-size:0.75rem;">Hecho con ❤️ para Chile · <a href="https://cachame.lol">Cachame.lol</a></p>
+      <p>El puesto se compra. El que más pone, más arriba queda.</p>
+      <p style="margin-top:5px;font-size:0.75rem;">Hecho con ❤️ para Chile · <a href="#">Cachame.lol</a></p>
     </footer>
 
   </div>
 
   <script>
-    // ===== ESTADO GLOBAL =====
-    let currentStep = 1;
-    let selectedPlatform = null;
-    let userData = {
-      platform: '',
-      url: '',
-      title: '',
-      description: '',
-      buttonText: 'Conocer más'
-    };
-
-    // ===== FUNCIONES DE NAVEGACIÓN =====
-    function goToStep(step) {
-      currentStep = step;
-      document.querySelectorAll('.step').forEach(el => {
-        const num = parseInt(el.dataset.step);
-        el.classList.remove('active', 'done');
-        if (num === step) el.classList.add('active');
-        else if (num < step) el.classList.add('done');
-      });
-      document.querySelectorAll('.step-content').forEach(el => {
-        el.classList.toggle('active', parseInt(el.dataset.step) === step);
-      });
-      document.getElementById('formCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    function scrollToForm() {
-      document.getElementById('formCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    // ===== PASO 1: DESTINO =====
-    document.querySelectorAll('.destino-card').forEach(card => {
-      card.addEventListener('click', function() {
-        document.querySelectorAll('.destino-card').forEach(c => c.classList.remove('selected'));
-        this.classList.add('selected');
-        selectedPlatform = this.dataset.platform;
-        const urlInput = document.getElementById('urlInput');
-        const placeholders = {
-          instagram: 'https://instagram.com/tuusuario',
-          youtube: 'https://youtube.com/@tucanal',
-          x: 'https://x.com/tuusuario',
-          external: 'https://tusitio.com'
-        };
-        urlInput.placeholder = placeholders[selectedPlatform] || 'https://...';
-        
-        const iconUrls = {
-          instagram: 'https://www.google.com/s2/favicons?domain=instagram.com&sz=32',
-          youtube: 'https://www.google.com/s2/favicons?domain=youtube.com&sz=32',
-          x: 'https://www.google.com/s2/favicons?domain=x.com&sz=32',
-          external: 'https://www.google.com/s2/favicons?domain=example.com&sz=32'
-        };
-        document.getElementById('previewIconImg').src = iconUrls[selectedPlatform] || iconUrls.external;
-        document.getElementById('hintIcon').src = iconUrls[selectedPlatform] || iconUrls.external;
-        document.getElementById('previewUrl').textContent = urlInput.value || placeholders[selectedPlatform] || 'tusitio.com';
-        
-        userData.platform = selectedPlatform;
-        userData.url = urlInput.value;
-      });
-    });
-
-    document.getElementById('urlInput').addEventListener('input', function() {
-      const url = this.value;
-      userData.url = url;
-      try {
-        const domain = new URL(url).hostname;
-        document.getElementById('previewUrl').textContent = domain;
-      } catch {
-        document.getElementById('previewUrl').textContent = url || 'tusitio.com';
-      }
-    });
-
-    // ===== PASO 2: PERSONALIZACIÓN =====
-    function updatePreview() {
-      const title = document.getElementById('titleInput').value || 'Título';
-      const desc = document.getElementById('descInput').value || 'Descripción';
-      const btn = document.getElementById('btnInput').value || 'Conocer más';
-
-      document.getElementById('previewTitle').textContent = title;
-      document.getElementById('previewDesc').textContent = desc;
-      document.getElementById('previewBtn').textContent = btn;
-
-      userData.title = title;
-      userData.description = desc;
-      userData.buttonText = btn;
-    }
-
-    function updateCharCount(inputId, countId, max) {
-      const input = document.getElementById(inputId);
-      const count = document.getElementById(countId);
-      const len = input.value.length;
-      count.textContent = `${len}/${max}`;
-      count.classList.toggle('over', len > max);
-    }
-
-    // ===== CONFIRMAR Y PAGAR =====
-    async function confirmAndPay() {
-      const url = document.getElementById('urlInput').value.trim();
-      const title = document.getElementById('titleInput').value.trim();
-      const desc = document.getElementById('descInput').value.trim();
-      const btn = document.getElementById('btnInput').value.trim();
-
-      if (!selectedPlatform) {
-        alert('❌ Elegí una plataforma de destino.');
-        return;
-      }
-      if (!url) {
-        alert('❌ Poné la URL a donde querés redirigir.');
-        return;
-      }
-      if (!title) {
-        alert('❌ Poné un título pa' tu puesto.');
-        return;
-      }
-
-      const confirmMsg = `📋 Confirmá tu puesto:\n\n` +
-        `📍 Destino: ${selectedPlatform}\n` +
-        `🔗 URL: ${url}\n` +
-        `📝 Título: ${title}\n` +
-        `📄 Descripción: ${desc || '(sin descripción)'}\n` +
-        `🔘 Botón: ${btn}\n\n` +
-        `¿Todo correcto? Vas a pagar pa' aparecer en el ranking.`;
-
-      if (!confirm(confirmMsg)) return;
-
-      const msgDiv = document.getElementById('paymentMessage') || document.createElement('div');
-      msgDiv.id = 'paymentMessage';
-      msgDiv.className = 'message success';
-      msgDiv.textContent = '⏳ Procesando pago...';
-      
-      const formCard = document.getElementById('formCard');
-      if (!document.getElementById('paymentMessage')) {
-        formCard.appendChild(msgDiv);
-      }
-
-      try {
-        const res = await fetch('/api/create-preference', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ 
-            name: title,
-            description: desc,
-            link: url,
-            amount: 1000,
-            platform: selectedPlatform,
-            buttonText: btn
-          })
-        });
-
-        const data = await res.json();
-        if (res.ok && data.init_point) {
-          if (data.init_point === '#') {
-            msgDiv.textContent = '⚠️ ' + data.message;
-            msgDiv.className = 'message error';
-          } else {
-            msgDiv.textContent = '✅ Redirigiendo a Mercado Pago...';
-            window.location.href = data.init_point;
-          }
-        } else {
-          msgDiv.textContent = `❌ Error: ${data.error || 'Intenta de nuevo'}`;
-          msgDiv.className = 'message error';
-        }
-      } catch (error) {
-        msgDiv.textContent = '❌ Error de conexión. Revisa tu internet.';
-        msgDiv.className = 'message error';
-      }
-    }
-
-    // ===== RANKING Y ESTADÍSTICAS =====
+    // ===== CARGAR RANKING =====
     async function loadRanking() {
       try {
         const res = await fetch('/api/ranking');
         const data = await res.json();
         renderRanking(data);
         updateStats(data);
-        updateActivity(data);
       } catch (error) {
-        console.error('Error cargando ranking:', error);
+        console.error('Error:', error);
         document.getElementById('rankingList').innerHTML = '<p style="color:red;">Error al cargar el ranking.</p>';
       }
     }
@@ -951,25 +234,20 @@
       document.getElementById('rankCount').textContent = ranking.length;
 
       if (ranking.length === 0) {
-        container.innerHTML = '<p style="text-align:center;color:#94a3b8;padding:20px;">Sé el primero en aparecer. ¡Pagá pa\' ser el #1!</p>';
+        container.innerHTML = '<p style="text-align:center;color:#94a3b8;padding:20px;">Sé el primero en aparecer.</p>';
         return;
       }
 
       container.innerHTML = ranking.map((item, index) => {
         const posClass = index === 0 ? 'top1' : index === 1 ? 'top2' : index === 2 ? 'top3' : '';
         const posEmoji = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `#${index + 1}`;
-        const timeAgo = item.created_at ? timeSince(new Date(item.created_at)) : 'hace un rato';
-
         return `
           <div class="ranking-item">
             <div class="position-badge ${posClass}">${posEmoji}</div>
             <div class="item-info">
               <a href="${item.link}" target="_blank" class="name">${item.name}</a>
               ${item.description ? `<div class="desc">${item.description}</div>` : ''}
-              <div class="meta">
-                <span>🔗 ${new URL(item.link).hostname}</span>
-                <span>⏱️ ${timeAgo}</span>
-              </div>
+              <div class="meta">🔗 ${new URL(item.link).hostname}</div>
             </div>
             <div class="item-amount">$${Number(item.amount).toLocaleString('es-CL')}</div>
           </div>
@@ -981,53 +259,68 @@
       const total = ranking.reduce((sum, item) => sum + Number(item.amount), 0);
       document.getElementById('totalAmount').textContent = `$${total.toLocaleString('es-CL')}`;
       document.getElementById('totalCount').textContent = ranking.length;
-
-      if (ranking.length > 0) {
-        const last = new Date(ranking[0].created_at);
-        document.getElementById('lastMove').textContent = `hace ${timeSince(last)}`;
-      }
     }
 
-    function updateActivity(ranking) {
-      const container = document.getElementById('activityList');
-      const recent = [...ranking].sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, 5);
+    // ===== ENVIAR FORMULARIO =====
+    document.getElementById('submitBtn').addEventListener('click', async function() {
+      const name = document.getElementById('nameInput').value.trim();
+      const link = document.getElementById('linkInput').value.trim();
+      const description = document.getElementById('descInput').value.trim();
+      const amount = parseInt(document.getElementById('amountInput').value);
+      const msgDiv = document.getElementById('message');
 
-      if (recent.length === 0) {
-        container.innerHTML = '<div style="text-align:center;color:#94a3b8;padding:20px;font-size:0.9rem;">Todavía no hay movimiento</div>';
+      msgDiv.style.display = 'none';
+      msgDiv.className = 'message';
+
+      if (!name || !link || !amount || amount < 1000) {
+        msgDiv.textContent = '❌ Completá todos los campos. El mínimo es $1.000 CLP.';
+        msgDiv.className = 'message error';
+        msgDiv.style.display = 'block';
         return;
       }
 
-      container.innerHTML = recent.map(item => {
-        const initials = item.name.substring(0, 2).toUpperCase();
-        const timeAgo = item.created_at ? timeSince(new Date(item.created_at)) : 'hace un rato';
-        return `
-          <div class="activity-item">
-            <div class="avatar">${initials}</div>
-            <div class="act-info">
-              <div class="act-name">${item.name}</div>
-              <div class="act-time">${timeAgo}</div>
-            </div>
-            <div class="act-amount">+$${Number(item.amount).toLocaleString('es-CL')}</div>
-          </div>
-        `;
-      }).join('');
-    }
+      this.disabled = true;
+      this.textContent = '⏳ Procesando...';
 
-    function timeSince(date) {
-      const seconds = Math.floor((new Date() - date) / 1000);
-      if (seconds < 60) return 'hace unos segundos';
-      const minutes = Math.floor(seconds / 60);
-      if (minutes < 60) return `hace ${minutes} minuto${minutes > 1 ? 's' : ''}`;
-      const hours = Math.floor(minutes / 60);
-      if (hours < 24) return `hace ${hours} hora${hours > 1 ? 's' : ''}`;
-      const days = Math.floor(hours / 24);
-      return `hace ${days} día${days > 1 ? 's' : ''}`;
-    }
+      try {
+        const res = await fetch('/api/create-preference', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, link, description, amount })
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          msgDiv.textContent = data.message || '✅ Pago registrado exitosamente.';
+          msgDiv.className = 'message success';
+          msgDiv.style.display = 'block';
+          
+          // Recargar el ranking
+          loadRanking();
+          
+          // Limpiar formulario
+          document.getElementById('nameInput').value = '';
+          document.getElementById('linkInput').value = '';
+          document.getElementById('descInput').value = '';
+          document.getElementById('amountInput').value = '';
+        } else {
+          msgDiv.textContent = `❌ Error: ${data.error || 'Intenta de nuevo'}`;
+          msgDiv.className = 'message error';
+          msgDiv.style.display = 'block';
+        }
+      } catch (error) {
+        msgDiv.textContent = '❌ Error de conexión. Revisa tu internet.';
+        msgDiv.className = 'message error';
+        msgDiv.style.display = 'block';
+      }
+
+      this.disabled = false;
+      this.textContent = '🔥 Pagar con Mercado Pago';
+    });
 
     // ===== CARGA INICIAL =====
     loadRanking();
     setInterval(loadRanking, 30000);
-    updatePreview();
   </script>
 </body>
 </html>
